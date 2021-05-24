@@ -72,13 +72,26 @@
 # Представьте Вы работаете в Мобильной Компании и вас попросили создать генератор номеров.
 # Создайте функцию gen_number() которая генерирует телефонный номер с кодом 0444______.
 # Номера которые можете генерировать могут содержать в себе только числа 145790. Пример: 0444150971 0444111777 0444457901
-from random import choice
+import random
+
+
 def gen_number():
-  intlist = [1, 4, 5, 7, 9, 0]
-  num = choice(intlist)
-  print(f'0444{num}{num}{num}{num}{num}{num}')  # я здесь еще исправлю (что-то не так :| )
+  nums = [1, 4, 5, 7, 9, 0]
+  number = '0444'
+  for i in range(6):
+    number += str(random.choice(nums))
+  return number
 
-gen_number()
+
+print(gen_number())
 
 
-
+# Написать lambda которая получает
+# сколько дней ПРОШЛО с нового года
+# как параметр и говорит пользователю
+# сколько дней ОСТАЛОСЬ до нового года.
+import datetime
+now = datetime.datetime.now() - datetime.datetime(2021, 1, 1)
+days = int(str(now).split()[0])
+res = lambda d: 365 - d
+print(f'Сколько дней осталось до НГ:', res(days))
